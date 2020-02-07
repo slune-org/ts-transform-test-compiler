@@ -126,3 +126,7 @@ Require the content of a compiled file.
 If `file` is not specified, the method will directly require the output directory, so there should be an index file there.
 
 If `variable` is provided, then the method will return the content of this exported variable, instead of the default export.
+
+# Contributions
+
+Even though we cannot guarantee a response time, please feel free to file an issue if you have any question or problem using the package. Pull request are also welcome.

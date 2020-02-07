@@ -118,3 +118,7 @@ Requiert le contenu d'un fichier compilé.
 Si `file` n'est pas spécifié, la méthode va directement requérir le répertoire de sortie, il devrait donc s'y trouver un fichier d'index.
 
 Si `variable` est spécifié, alors la méthode va renvoyer le contenu de cette variable exportée plutôt que l'export par défaut.
+
+# Contributions
+
+Bien que je ne puisse garantir un temps de réponse, n'hésitez pas à ouvrir un incident si vous avez une question ou un problème pour utiliser ce paquet. Les _Pull Request_ sont également bienvenues.
