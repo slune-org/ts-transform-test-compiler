@@ -24,13 +24,13 @@ Anyway, because English is the language of programming, the code, including vari
 Installation is done using `npm install` command:
 
 ```bash
-$ npm install --save-dev ts-transform-test-compiler
+npm install --save-dev ts-transform-test-compiler
 ```
 
 If you prefer using `yarn`:
 
 ```bash
-$ yarn add --dev ts-transform-test-compiler
+yarn add --dev ts-transform-test-compiler
 ```
 
 # Usage
@@ -58,6 +58,10 @@ describe('My test suite', function() {
 # API
 
 ## Compiler
+
+## Getting default CompilerOptions
+
+Exposed method `getDefaultTsConfig()` to retrieve the default compiler options so the user is able to overwrite or extend the default options to apply it on Compiler constructor afterwards
 
 ### constructor(transformer: Transformer, outDir: string, compilerOptions?: CompilerOptions)
 
