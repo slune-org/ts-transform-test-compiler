@@ -29,6 +29,8 @@ const defaultTsConfig: CompilerOptions = {
   target: ScriptTarget.ES2015,
 }
 
+export const getDefaultTsConfig = (): CompilerOptions => defaultTsConfig;
+
 /**
  * Typescript compiler for transformer testing.
  */
