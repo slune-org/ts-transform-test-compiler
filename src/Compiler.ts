@@ -29,7 +29,7 @@ const defaultTsConfig: CompilerOptions = {
   target: ScriptTarget.ES2015,
 }
 
-export const getDefaultTsConfig = (): CompilerOptions => defaultTsConfig;
+export const getDefaultTsConfig = (): CompilerOptions => defaultTsConfig
 
 /**
  * Typescript compiler for transformer testing.
@@ -65,14 +65,18 @@ export default class Compiler {
    *
    * @param transformer - The transformer function to test.
    * @param outDir - The directory where compilation result will be emitted.
-   * @param compilerOptions - The compiler options, if default options do not fit. As they may change for
+   * @param _compilerOptions - The compiler options, if default options do not fit. As they may change for
    * each test, `rootDir` and `outDir` should not be set here (will be overriden at each compilation).
    */
   public constructor(
     private readonly transformer: TransformerMetaFactory,
     private readonly outDir: string,
-    private readonly compilerOptions: CompilerOptions = defaultTsConfig
+    private readonly _compilerOptions: CompilerOptions = defaultTsConfig
   ) {}
+
+  public get compilerOptions() {
+    return this._compilerOptions
+  }
 
   /**
    * Set the transformer hook (the phase when transformer is to be called).
