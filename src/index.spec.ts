@@ -11,7 +11,7 @@ import {
   visitNode,
 } from 'typescript'
 
-import Compiler from '.'
+import Compiler, { getDefaultTsConfig } from '.'
 
 function noopTransformer(): TransformerFactory<SourceFile> {
   return (): Transformer<SourceFile> => (sf: SourceFile) => visitNode(sf, (node: Node) => node)
@@ -86,5 +86,22 @@ describe('Compiler', function() {
     const output = catchOutput(() => result.print())
     expect(result.succeeded).to.be.false
     expect(output).to.be.match(/is not assignable/)
+  })
+})
+
+describe('getDefaultTsConfig', () => {
+  it('returns default CompilerOptions', function() {
+    const compiler = new Compiler(noopTransformer, 'dist/__test__')
+
+    expect(getDefaultTsConfig()).equal(compiler.compilerOptions)
+  })
+
+  it('Compiler can extend defaultTsConfig', function() {
+    const defaultOptions = getDefaultTsConfig()
+    const extendedConfig = Object.assign(getDefaultTsConfig(), { experimentalDecorators: false })
+    const compiler = new Compiler(noopTransformer, 'dist/__test__', extendedConfig)
+
+    expect(compiler.compilerOptions.noEmitOnError).equal(defaultOptions.noEmitOnError)
+    expect(compiler.compilerOptions.experimentalDecorators).equal(false)
   })
 })
