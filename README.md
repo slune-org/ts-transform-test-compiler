@@ -29,7 +29,7 @@ $ npm install --save-dev ts-transform-test-compiler
 
 # Usage
 
-First thing to do is to create a compiler object. This compiler might be shared accross the test suite as it only holds static configuration.
+First thing to do is to create a compiler object. This compiler might be shared across the test suite as it only holds static configuration.
 
 Then use this compiler object to set some options, if needed, and finally compile tested classes with the transformer.
 
@@ -97,7 +97,7 @@ This method returns `this`, allowing it to be chained.
 
 ### compile(name: string, configuration: any): CompilationResult
 
-Compile the files using the transformer. The `name` given to the compilation will be used to create a sub-directory under the `outDir` to emit the files. It will prevent all tests to emit files in the same place. You may, of course, give the same name to many tests, althought not recommended.
+Compile the files using the transformer. The `name` given to the compilation will be used to create a sub-directory under the `outDir` to emit the files. It will prevent all tests to emit files in the same place. You may, of course, give the same name to many tests, although not recommended.
 
 The `configuration` parameter is the configuration to give to the transformer.
 
@@ -120,6 +120,10 @@ Require the content of a compiled file.
 If `file` is not specified, the method will directly require the output directory, so there should be an index file there.
 
 If `variable` is provided, then the method will return the content of this exported variable, instead of the default export.
+
+## defaultTsConfig
+
+The default configuration used by the compiler is exported as an immutable object named `defaultTsConfig` so that you may override it instead of fully rewriting it.
 
 # Contributing
 

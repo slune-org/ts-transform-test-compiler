@@ -18,7 +18,7 @@ import CompilationResult from './CompilationResult'
 
 type TransformerMetaFactory = (program: Program, configuration: unknown) => TransformerFactory<SourceFile>
 
-const defaultTsConfig: CompilerOptions = {
+export const defaultTsConfig: CompilerOptions = Object.freeze({
   experimentalDecorators: true,
   module: ModuleKind.CommonJS,
   moduleResolution: ModuleResolutionKind.NodeJs,
@@ -27,7 +27,7 @@ const defaultTsConfig: CompilerOptions = {
   noUnusedParameters: true,
   stripInternal: true,
   target: ScriptTarget.ES2015,
-}
+})
 
 /**
  * Typescript compiler for transformer testing.

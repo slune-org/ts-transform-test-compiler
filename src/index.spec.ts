@@ -1,17 +1,8 @@
 /* eslint-disable prefer-arrow-callback, no-unused-expressions */
 import { expect } from 'chai'
-import {
-  ModuleKind,
-  ModuleResolutionKind,
-  Node,
-  ScriptTarget,
-  SourceFile,
-  Transformer,
-  TransformerFactory,
-  visitNode,
-} from 'typescript'
+import { Node, ScriptTarget, SourceFile, Transformer, TransformerFactory, visitNode } from 'typescript'
 
-import Compiler from '.'
+import Compiler, { CompilationResult, defaultTsConfig } from '.'
 
 function noopTransformer(): TransformerFactory<SourceFile> {
   return (): Transformer<SourceFile> => (sf: SourceFile) => visitNode(sf, (node: Node) => node)
@@ -47,13 +38,7 @@ describe('Compiler', function () {
   it('should compile with options', function () {
     const testName = 'options'
     const compiler = new Compiler(noopTransformer, 'dist/__test__', {
-      experimentalDecorators: true,
-      module: ModuleKind.CommonJS,
-      moduleResolution: ModuleResolutionKind.NodeJs,
-      noEmitOnError: false,
-      noUnusedLocals: true,
-      noUnusedParameters: true,
-      stripInternal: true,
+      ...defaultTsConfig,
       target: ScriptTarget.ES5,
     })
       .setTransformerHook('after')
@@ -86,5 +71,13 @@ describe('Compiler', function () {
     const output = catchOutput(() => result.print())
     expect(result.succeeded).to.be.false
     expect(output).to.be.match(/is not assignable/)
+  })
+})
+
+describe('CompilerOutput', function () {
+  // This is actually a hack to reach 100% coverage
+  it('should be created correctly', function () {
+    const result = new CompilationResult('', [])
+    expect(result.succeeded).to.be.true
   })
 })

@@ -55,7 +55,7 @@ Les options de compilation sont optionnelles. Un ensemble de valeurs par défaut
 
 ### setTransformerHook(hook: keyof CustomTransformers): this
 
-Appelez cette méthode pour indiquer le crochet à utiliser pour le transformateur (c'est-à-dire la phase à laquelle le transforamteur est appelé). Si cette méthode n'est pas appelée, le crochet par défaut est `before`.
+Appelez cette méthode pour indiquer le crochet à utiliser pour le transformateur (c'est-à-dire la phase à laquelle le transformateur est appelé). Si cette méthode n'est pas appelée, le crochet par défaut est `before`.
 
 Cette méthode modifie l'objet de compilation. Vous pouvez l'appeler une seule fois (par exemple, à la création de l'objet de compilation) ou plusieurs fois (par exemple avant chaque test).
 
@@ -112,6 +112,10 @@ Requiert le contenu d'un fichier compilé.
 Si `file` n'est pas spécifié, la méthode va directement requérir le répertoire de sortie, il devrait donc s'y trouver un fichier d'index.
 
 Si `variable` est spécifié, alors la méthode va renvoyer le contenu de cette variable exportée plutôt que l'export par défaut.
+
+## defaultTsConfig
+
+La configuration par défaut utilisée par le compilateur est exportée en tant qu'objet immutable nomé `defaultTsConfig` afin que vous puissiez la surcharger plutôt que de le ré-écrire complètement.
 
 # Contribuer
 
