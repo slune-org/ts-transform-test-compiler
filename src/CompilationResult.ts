@@ -45,6 +45,7 @@ export default class CompilationResult {
    * @returns The content of the file.
    */
   public requireContent(file?: string, variable?: string): any {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     return require(join(this.outDir, file ?? ''))[variable ?? 'default']
   }
 }

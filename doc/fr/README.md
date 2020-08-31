@@ -7,22 +7,16 @@ Ce paquet fourni une API simple pour faire quelques compilation _TypeScript_ bas
 
 # Langue
 
-Slune étant une entreprise française, vous trouverez tous les documents et messages en français. Les autres traductions sont bienvenues.
+Les documents et messages, le code (y compris les noms de variable et commentaires), sont en anglais.
 
-Cependant, l'anglais étant la langue de la programmation, le code, y compris les noms de variable et commentaires, sont en anglais.
+Cependant, Slune étant une entreprise française, tous les documents et messages importants doivent également être fournis en français. Les autres traductions sont bienvenues.
 
 # Installation
 
-L'installation se fait avec la commande `npm install` :
+L’installation se fait avec la commande `npm install` :
 
 ```bash
 $ npm install --save-dev ts-transform-test-compiler
-```
-
-Si vous préférez utiliser `yarn` :
-
-```bash
-$ yarn add --dev ts-transform-test-compiler
 ```
 
 # Utilisation
@@ -35,10 +29,10 @@ Ensuite, utilisez l'objet de compilation pour lui paramétrer des options, si be
 import Compiler from 'ts-transform-test-compiler'
 import myTransform from '.'
 
-describe('My test suite', function() {
+describe('My test suite', function () {
   const compiler = new Compiler(myTransform, 'dist/__test__').setRootDir('__test__')
 
-  it('should do what I expect', function() {
+  it('should do what I expect', function () {
     const transformParams = { astring: 'hello', anumber: 12 }
     const result = compiler.setSourceFiles('test1/').compile('test1', transformParams)
     expect(result.succeeded).to.be.true
@@ -61,13 +55,13 @@ Les options de compilation sont optionnelles. Un ensemble de valeurs par défaut
 
 ### setTransformerHook(hook: keyof CustomTransformers): this
 
-Appelez cette méthode pour indiquer le crochet à utiliser pour le transformateur (c'est-à-dire la phase à laquelle le transforamteur est appelé). Si cette méthode n'est pas appelée, le crochet par défaut est `before`.
+Appelez cette méthode pour indiquer le crochet à utiliser pour le transformateur (c'est-à-dire la phase à laquelle le transformateur est appelé). Si cette méthode n'est pas appelée, le crochet par défaut est `before`.
 
 Cette méthode modifie l'objet de compilation. Vous pouvez l'appeler une seule fois (par exemple, à la création de l'objet de compilation) ou plusieurs fois (par exemple avant chaque test).
 
 Cette méthode renvoie `this`, lui permettant d'être chainée.
 
-### setSourceFiles(sourceFiles: string, ignoredFiles?: string | string[]): this
+### setSourceFiles(sourceFiles: string, ignoredFiles?: string | string\[]): this
 
 Appelez cette méthode pour indiquer les fichiers à utiliser comme sources. Vous pouvez n'indiquer que les points d'entrée car le compilateur ira automatiquement rechercher les autres fichiers requis. Tous les fichiers fournis doivent se trouver dans la racine du projet, qui est le répertoire courant par défaut.
 
@@ -119,6 +113,12 @@ Si `file` n'est pas spécifié, la méthode va directement requérir le réperto
 
 Si `variable` est spécifié, alors la méthode va renvoyer le contenu de cette variable exportée plutôt que l'export par défaut.
 
-# Contributions
+## defaultTsConfig
 
-Bien que je ne puisse garantir un temps de réponse, n'hésitez pas à ouvrir un incident si vous avez une question ou un problème pour utiliser ce paquet. Les _Pull Request_ sont également bienvenues.
+La configuration par défaut utilisée par le compilateur est exportée en tant qu'objet immutable nomé `defaultTsConfig` afin que vous puissiez la surcharger plutôt que de le ré-écrire complètement.
+
+# Contribuer
+
+Bien que nous ne puissions pas garantir un temps de réponse, n’hésitez pas à ouvrir un incident si vous avez une question ou un problème pour utiliser ce paquet.
+
+Les _Pull Requests_ sont bienvenues. Vous pouvez bien sûr soumettre des corrections ou améliorations de code, mais n’hésitez pas également à améliorer la documentation, même pour de petites fautes d’orthographe ou de grammaire.
