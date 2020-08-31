@@ -16,7 +16,7 @@ import {
 
 import CompilationResult from './CompilationResult'
 
-type TransformerMetaFactory = (program: Program, configuration: any) => TransformerFactory<SourceFile>
+type TransformerMetaFactory = (program: Program, configuration: unknown) => TransformerFactory<SourceFile>
 
 const defaultTsConfig: CompilerOptions = {
   experimentalDecorators: true,
@@ -125,7 +125,7 @@ export default class Compiler {
    * @param configuration - The configuration to give to transformer.
    * @returns The compilation result.
    */
-  public compile(name: string, configuration: any): CompilationResult {
+  public compile(name: string, configuration: unknown): CompilationResult {
     // Prepare options and compiler host
     const options: CompilerOptions = {
       ...this.compilerOptions,

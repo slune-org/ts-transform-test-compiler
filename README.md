@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/slune-org/ts-transform-test-compiler/badge.svg?branch=master)](https://coveralls.io/github/slune-org/ts-transform-test-compiler?branch=master)
 [![Issues](https://img.shields.io/github/issues/slune-org/ts-transform-test-compiler.svg)](https://github.com/slune-org/ts-transform-test-compiler/issues)
 
-# ts-transform-test-compiler - A simple API to test TypeScript transformers
+# ts-transform-test-compiler - Compiler API for testing TypeScript transformers
 
 This package provides a simple API to make some basic _TypeScript_ compilation using a given transformer. The purpose of this package is not to ease the use of transformers, but only to be included in a transformer test suite. For usage examples, you can look at:
 
@@ -13,9 +13,9 @@ This package provides a simple API to make some basic _TypeScript_ compilation u
 
 # Language/langue
 
-Because Slune is French firm, you will find all documents and messages in French. Other translations are welcome.
+Documents, messages, code (including variable names and comments), are in English.
 
-Anyway, because English is the language of programming, the code, including variable names and comments, are in English.
+Anyway, because Slune is French firm, all documents and important messages must also be provided in French. Other translations are welcome.
 
 :fr: Une version française de ce document se trouve [ici](doc/fr/README.md).
 
@@ -25,12 +25,6 @@ Installation is done using `npm install` command:
 
 ```bash
 $ npm install --save-dev ts-transform-test-compiler
-```
-
-If you prefer using `yarn`:
-
-```bash
-$ yarn add --dev ts-transform-test-compiler
 ```
 
 # Usage
@@ -43,10 +37,10 @@ Then use this compiler object to set some options, if needed, and finally compil
 import Compiler from 'ts-transform-test-compiler'
 import myTransform from '.'
 
-describe('My test suite', function() {
+describe('My test suite', function () {
   const compiler = new Compiler(myTransform, 'dist/__test__').setRootDir('__test__')
 
-  it('should do what I expect', function() {
+  it('should do what I expect', function () {
     const transformParams = { astring: 'hello', anumber: 12 }
     const result = compiler.setSourceFiles('test1/').compile('test1', transformParams)
     expect(result.succeeded).to.be.true
@@ -75,7 +69,7 @@ This method modifies the compiler object. You may call it once (e.g. at compiler
 
 This method returns `this`, allowing it to be chained.
 
-### setSourceFiles(sourceFiles: string, ignoredFiles?: string | string[]): this
+### setSourceFiles(sourceFiles: string, ignoredFiles?: string | string\[]): this
 
 Call this method to set the files to be used as sources. You may only specify entry points as the compiler will automatically require other needed files. All provided files must reside under the project root directory, which by default is the current directory.
 
@@ -127,6 +121,8 @@ If `file` is not specified, the method will directly require the output director
 
 If `variable` is provided, then the method will return the content of this exported variable, instead of the default export.
 
-# Contributions
+# Contributing
 
-Even though we cannot guarantee a response time, please feel free to file an issue if you have any question or problem using the package. Pull request are also welcome.
+Even though we cannot guarantee a response time, please feel free to file an issue if you have any question or problem using the package.
+
+_Pull Requests_ are welcome. You can, of course, submit corrections or improvements for code, but do not hesitate to also improve documentation, even for small spell or grammar errors.
