@@ -34,7 +34,6 @@
     "test:lint": "eslint --config .eslintrc.full.yaml --max-warnings 0 'src/**/*.ts'",
     "test:depends": "depcheck",
     "test:unit": "nyc mocha 'src/**/*.spec.ts'",
-    "test:dep": "depcheck",
     "build": "pm-exec run build:main",
     "build:main": "tsc",
     "debug": "pm-exec run debug:watch",
