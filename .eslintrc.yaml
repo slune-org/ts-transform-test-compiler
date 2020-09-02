@@ -121,6 +121,7 @@ rules:
         caseInsensitive: true
   jsdoc/newline-after-description: warn
   jsdoc/no-types: warn
+  jsdoc/no-undefined-types: 'off'
   jsdoc/require-description-complete-sentence:
     - warn
     - abbreviations:
